@@ -1,7 +1,4 @@
 asgiref==3.11.1
-django-redis==5.4.0
-psycopg2-binary==2.9.10
-redis==5.2.1
 attrs==25.4.0
 cffi==2.0.0
 cryptography==46.0.5
