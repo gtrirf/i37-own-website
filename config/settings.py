@@ -28,7 +28,7 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost,http://127.0.0.1"] if DEBUG else env.l
 
 # Application definition
 LOCAL_APPS = [
-    "apps.users",    # template default — AUTH_USER_MODEL uchun kerak, API route ochilmaydi
+    # "apps.users",    # template default — AUTH_USER_MODEL uchun kerak, API route ochilmaydi
     "apps.core",
     "apps.blog",
     "apps.portfolio",
@@ -110,7 +110,7 @@ DATABASES = {
                                         default='False').lower() == 'true' else SQLITE_DB_CONF,
 }
 
-
+AUTH_USER_MODEL = 'auth.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -205,26 +205,17 @@ USE_TZ = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # SessionAuth faqat development payti brauzerda test qilish uchun qulay. 
-        # Productionda mobil ilovalar uchun buni o'chirib qo'ygan ma'qul, 
-        # lekin Swagger/Admin ishlashi uchun qoldiramiz.
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # faqat Admin uchun
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',  # hammaga ochiq
     ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    
-    # 2. Xavfsizlik uchun: Throttling (Limitlar)
-    # Bitta user sekundiga necha marta zapros yubora olishini cheklaymiz.
     'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle', # Login qilmaganlar uchun
-        'rest_framework.throttling.UserRateThrottle'  # Login qilganlar uchun
+        'rest_framework.throttling.AnonRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/minute',  # Login qilmagan: minutiga 10 ta zapros
-        'user': '100/minute'  # Login qilgan: minutiga 100 ta zapros
+        'anon': '60/minute',
     }
 }
 
