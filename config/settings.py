@@ -36,8 +36,8 @@ LOCAL_APPS = [
 THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
-    'rest_framework_simplejwt',
-    'rest_framework_simplejwt.token_blacklist',
+    # 'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt.token_blacklist',
     'drf_spectacular',
 ]
 DJANGO_APPS = [
@@ -249,10 +249,6 @@ SIMPLE_JWT = {
 
     'JTI_CLAIM': 'jti',
 }
-
-# auth and user model
-AUTH_USER_MODEL = 'users.CustomUser'
-
 
 SPECTACULAR_SETTINGS = {
     # 1. Asosiy ma'lumotlar
