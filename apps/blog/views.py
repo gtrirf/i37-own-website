@@ -2,6 +2,8 @@ from django.db.models import F
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from drf_spectacular.utils import extend_schema, OpenApiParameter
+from apps.pagination import StandardPagination
 from .models import BlogType, Blog
 from .serializers import BlogTypeSerializer, BlogListSerializer, BlogDetailSerializer
 
@@ -12,9 +14,18 @@ class BlogTypeListView(generics.ListAPIView):
     queryset = BlogType.objects.all()
 
 
+@extend_schema(
+    parameters=[
+        OpenApiParameter(name='search', description='Blog sarlavhasi boyicha qidirish', required=False, type=str),
+        OpenApiParameter(name='type', description='BlogType ID si boyicha filter', required=False, type=int),
+        OpenApiParameter(name='page', description='Sahifa raqami', required=False, type=int),
+        OpenApiParameter(name='page_size', description='Sahifadagi elementlar soni (max: 100)', required=False, type=int),
+    ]
+)
 class BlogListView(generics.ListAPIView):
     permission_classes = [AllowAny]
     serializer_class = BlogListSerializer
+    pagination_class = StandardPagination
 
     def get_queryset(self):
         queryset = Blog.objects.select_related('blog_type').prefetch_related('images')
