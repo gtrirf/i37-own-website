@@ -12,3 +12,7 @@ __pycache__/
 */__pycache__
 apps/__pycache__
 apps/*/__pycache__
+
+TODO.md
+CLAUDE.md
+CLAUDETZ.md
