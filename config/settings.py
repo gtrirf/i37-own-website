@@ -28,7 +28,10 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost,http://127.0.0.1"] if DEBUG else env.l
 
 # Application definition
 LOCAL_APPS = [
-    "apps.users",
+    "apps.users",    # template default — AUTH_USER_MODEL uchun kerak, API route ochilmaydi
+    "apps.core",
+    "apps.blog",
+    "apps.portfolio",
 ]
 THIRD_PARTY_APPS = [
     'corsheaders',
