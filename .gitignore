@@ -16,6 +16,8 @@ apps/*/__pycache__
 TODO.md
 CLAUDE.md
 CLAUDETZ.md
+CLAUDEFRONT.md
 docs/
 data/
 api.i37.uz.yaml
+frontend\node_modules
