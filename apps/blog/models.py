@@ -1,4 +1,5 @@
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class BlogType(models.Model):
@@ -14,7 +15,7 @@ class BlogType(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = CKEditor5Field(config_name='default')
     view_counts = models.PositiveIntegerField(default=0)
     blog_type = models.ForeignKey(
         BlogType, on_delete=models.SET_NULL, null=True, blank=True, related_name='blogs'

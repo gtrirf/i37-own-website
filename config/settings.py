@@ -39,6 +39,7 @@ THIRD_PARTY_APPS = [
     # 'rest_framework_simplejwt',
     # 'rest_framework_simplejwt.token_blacklist',
     'drf_spectacular',
+    'django_ckeditor_5',
 ]
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -304,6 +305,30 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# django-ckeditor-5 (Blog.content uchun rich text)
+CKEDITOR_5_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+CKEDITOR_5_UPLOAD_PATH = 'blog/content_uploads/'
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'link', 'underline', 'strikethrough', '|',
+            'bulletedList', 'numberedList', 'blockQuote', '|',
+            'imageUpload', 'mediaEmbed', 'insertTable', 'codeBlock', '|',
+            'undo', 'redo',
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
+                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side'],
+            'styles': ['full', 'side', 'alignLeft', 'alignRight', 'alignCenter'],
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells'],
+        },
+    },
+}
 
 
 # # Redis / Cache
