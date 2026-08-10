@@ -61,12 +61,13 @@ const props = defineProps({
 })
 
 const excerpt = computed(() => {
-  const text = props.article.content || ''
+  const text = (props.article.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
   return text.length > 120 ? text.slice(0, 120).trimEnd() + '…' : text
 })
 
 const readTime = computed(() => {
-  const words = (props.article.content || '').split(/\s+/).filter(Boolean).length
+  const text = (props.article.content || '').replace(/<[^>]*>/g, ' ')
+  const words = text.split(/\s+/).filter(Boolean).length
   return Math.max(1, Math.ceil(words / 200))
 })
 

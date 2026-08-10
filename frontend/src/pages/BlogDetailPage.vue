@@ -56,15 +56,7 @@
         </header>
 
         <!-- Content -->
-        <div class="blog-detail__content">
-          <p
-            v-for="(paragraph, i) in paragraphs"
-            :key="i"
-            class="blog-detail__paragraph"
-          >
-            {{ paragraph }}
-          </p>
-        </div>
+        <div class="blog-detail__content" v-html="blog.content"></div>
 
         <!-- Images gallery -->
         <div v-if="blog.images && blog.images.length" class="blog-detail__gallery">
@@ -107,17 +99,13 @@ const lightbox = ref(null)
 
 const blog = computed(() => blogStore.currentBlog)
 
-const paragraphs = computed(() => {
-  const content = blog.value?.content || ''
-  return content.split(/\n+/).filter(p => p.trim())
-})
-
 const sortedImages = computed(() => {
   return [...(blog.value?.images || [])].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
 })
 
 const readTime = computed(() => {
-  const words = (blog.value?.content || '').split(/\s+/).filter(Boolean).length
+  const text = (blog.value?.content || '').replace(/<[^>]*>/g, ' ')
+  const words = text.split(/\s+/).filter(Boolean).length
   return Math.max(1, Math.ceil(words / 200))
 })
 
