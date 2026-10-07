@@ -3,7 +3,7 @@
 db.sqlite3
 logs
 .vscode
-static/
+/static/
 
 
 __pycache__/
