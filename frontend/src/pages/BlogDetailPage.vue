@@ -73,6 +73,7 @@
                 :alt="img.alt_txt || blog.title"
                 class="blog-detail__img"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption v-if="img.caption" class="blog-detail__caption">
                 {{ img.caption }}

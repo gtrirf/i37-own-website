@@ -9,6 +9,7 @@
           :alt="article.first_image.alt_txt || article.title"
           class="article-card__img"
           loading="lazy"
+          decoding="async"
         />
         <div v-else class="article-card__img-placeholder" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">

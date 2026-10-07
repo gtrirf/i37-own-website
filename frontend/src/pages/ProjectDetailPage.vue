@@ -38,6 +38,8 @@
             :alt="coverImage.alt_txt || project.title"
             class="project-detail__cover-img"
             loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
 
@@ -112,6 +114,7 @@
                 :alt="img.alt_txt || project.title"
                 class="project-detail__img"
                 loading="lazy"
+                decoding="async"
               />
               <figcaption v-if="img.caption" class="project-detail__caption">
                 {{ img.caption }}

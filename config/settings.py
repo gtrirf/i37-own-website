@@ -308,7 +308,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # django-ckeditor-5 (Blog.content uchun rich text)
-CKEDITOR_5_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+CKEDITOR_5_FILE_STORAGE = 'apps.images.WebPFileSystemStorage'  # rasmlar avtomatik WebP ga o'tadi
 CKEDITOR_5_UPLOAD_PATH = 'blog/content_uploads/'
 CKEDITOR_5_CONFIGS = {
     'default': {

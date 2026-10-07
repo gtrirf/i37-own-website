@@ -11,6 +11,8 @@
               :src="mainInfo.photo"
               :alt="mainInfo.name || 'Islombek Ravshanov'"
               class="hero__avatar-img"
+              fetchpriority="high"
+              decoding="async"
             />
             <div v-else class="hero__avatar-placeholder" aria-hidden="true">
               <svg viewBox="0 0 80 80" fill="none">
@@ -89,6 +91,7 @@
               :alt="item.name"
               class="career__logo"
               loading="lazy"
+              decoding="async"
             />
             <span v-else class="career__name">{{ item.name }}</span>
           </a>

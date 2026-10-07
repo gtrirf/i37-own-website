@@ -140,9 +140,10 @@ function goToPage(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-onMounted(async () => {
-  await blogStore.fetchBlogTypes()
-  await loadBlogs()
+onMounted(() => {
+  // parallel yuklash — biri ikkinchisini kutmaydi
+  blogStore.fetchBlogTypes()
+  loadBlogs()
 })
 </script>
 

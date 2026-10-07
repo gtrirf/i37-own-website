@@ -7,6 +7,8 @@
           :src="themeStore.isDark ? logoDark : logoLight"
           alt="i37"
           class="navbar__logo-img"
+          height="28"
+          fetchpriority="high"
         />
       </RouterLink>
 
@@ -90,8 +92,8 @@
 import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useThemeStore } from '@/stores/theme.js'
-import logoDark from '@/components/static/logofordark.png'
-import logoLight from '@/components/static/logoforlight.png'
+import logoDark from '@/components/static/logofordark.webp'
+import logoLight from '@/components/static/logoforlight.webp'
 
 const route = useRoute()
 const themeStore = useThemeStore()

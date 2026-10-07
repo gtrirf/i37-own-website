@@ -21,6 +21,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    target: 'es2020',
+    rollupOptions: {
+      output: {
+        // Kutubxonalar alohida chunk — sayt kodi o'zgarganda brauzer keshida qoladi
+        manualChunks: {
+          vendor: ['vue', 'vue-router', 'pinia', 'axios']
+        }
+      }
+    }
   }
 })
