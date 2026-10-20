@@ -21,8 +21,9 @@ services:
     image: nginx:1.27-alpine
     restart: unless-stopped
     ports:
-      - "8002:80"
-      - "8003:8003"
+      # faqat localhost — tashqaridan faqat host nginx (443) orqali kiriladi
+      - "127.0.0.1:8002:80"
+      - "127.0.0.1:8003:8003"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - static_files:/app/static:ro
